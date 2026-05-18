@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { MathUtilsComponent } from './math-utils.component';
 import { FormsModule } from '@angular/forms';
 import { MathUtilService } from '../../services/MathUtil.service';
@@ -6,8 +6,8 @@ import { MockMathUtilService } from '../../../mocks/MathUtils.service.mock';
 
 describe('Math utils Component', () => {
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [
         MathUtilsComponent
       ],
@@ -20,16 +20,16 @@ describe('Math utils Component', () => {
       ]
     }).compileComponents();
     // compileComponents compiles all the components so they are ready to be created as needed
-  }));
+  });
 
-  it('should create the Math Utils Component', waitForAsync(() => {
+  it('should create the Math Utils Component', () => {
     const fixture = TestBed.createComponent(MathUtilsComponent);
     const mathUtils = fixture.debugElement.componentInstance;
     expect(mathUtils).toBeTruthy();
-  }));
+  });
 
   // Standard Matcher Example
-  it('should accurately add two numbers together', waitForAsync(() => {
+  it('should accurately add two numbers together', () => {
     // Create the compiled component pertinant to our test
     const fixture = TestBed.createComponent(MathUtilsComponent);
 
@@ -43,11 +43,11 @@ describe('Math utils Component', () => {
 
     // Call the add method on the mathUtilsComponent, and see that the final result returns
     expect(mathUtilsService.add(numberOne, numberTwo)).toEqual(numberThree);
-  }));
+  });
 
 
   // Spy Example
-  it('should have called the MathUtilsService when MathUtils.add is called', waitForAsync(() => {
+  it('should have called the MathUtilsService when MathUtils.add is called', () => {
     // Create the compiled component pertinant to our test
     const fixture = TestBed.createComponent(MathUtilsComponent);
 
@@ -58,7 +58,7 @@ describe('Math utils Component', () => {
     const mathUtilsService = fixture.debugElement.injector.get(MathUtilService);
 
     // Set up a spy on the Math Utils Service so we can monitor if it is being called properly
-    spyOn(mathUtilsService, 'add');
+    vi.spyOn(mathUtilsService, 'add');
 
     // Call the add method on the mathUtilsComponent, which should in turn call the MathUtilsService.add() method
     mathUtils.add(10,10);
@@ -66,10 +66,10 @@ describe('Math utils Component', () => {
     // Check to see if the Service has been called
     expect(mathUtilsService.add).toHaveBeenCalled();
 
-  }));
+  });
 
   // Spy Return Value Example
-  it('should correctly assign the returned value to the addedValue variable', waitForAsync(() => {
+  it('should correctly assign the returned value to the addedValue variable', () => {
     // Create the compiled component pertinant to our test
     const fixture = TestBed.createComponent(MathUtilsComponent);
 
@@ -83,14 +83,14 @@ describe('Math utils Component', () => {
     let numberToReturn = 11;
 
     // Set up a spy on the Math Utils Service so we can monitor if it is being called properly
-    spyOn(mathUtilsService, 'add').and.returnValue(numberToReturn);
+    vi.spyOn(mathUtilsService, 'add').mockReturnValue(numberToReturn);
 
     // Call the add method on the mathUtilsComponent, which should in turn call the MathUtilsService.add() method
     mathUtils.add(0,0);
 
     // Check that the mathUtilsComponent is correctly assigning the returned value to the right variable
     expect(mathUtils.addedValue).toEqual(numberToReturn);
-  }));
+  });
 
   // Custom Matcher Example
   // https://jasmine.github.io/2.8/custom_matcher.html

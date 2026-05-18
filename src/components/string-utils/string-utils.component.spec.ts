@@ -1,4 +1,4 @@
-import { TestBed, waitForAsync, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { MathUtilsComponent } from '../math-utils/math-utils.component';
 import { StringUtilsComponent } from '../string-utils/string-utils.component';
 import { FormsModule } from '@angular/forms';
@@ -9,8 +9,8 @@ import { MockMathUtilService } from '../../../mocks/MathUtils.service.mock';
 
 describe('String utils Component', () => {
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [
         MathUtilsComponent,
         StringUtilsComponent
@@ -25,15 +25,15 @@ describe('String utils Component', () => {
       ]
     }).compileComponents();
     // compileComponents compiles all the components so they are ready to be created as needed
-  }));
+  });
 
 
 
-  it('should create the String Utils Component', waitForAsync(() => {
+  it('should create the String Utils Component', () => {
     const fixture = TestBed.createComponent(StringUtilsComponent);
     const StringUtils = fixture.debugElement.componentInstance;
     expect(StringUtils).toBeTruthy();
-  }));
+  });
 
   
 });
