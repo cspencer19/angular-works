@@ -4,7 +4,8 @@ import { StringUtilService } from '../../services/StringUtil.service';
 @Component({
   selector: 'string-utils',
   templateUrl: './string-utils.component.html',
-  styleUrls: ['./string-utils.component.css']
+  styleUrls: ['./string-utils.component.css'],
+  standalone: false
 })
 export class StringUtilsComponent {
 

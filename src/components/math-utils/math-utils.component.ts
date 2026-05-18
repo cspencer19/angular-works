@@ -4,7 +4,8 @@ import { MathUtilService } from '../../services/MathUtil.service';
 @Component({
   selector: 'math-utils',
   templateUrl: './math-utils.component.html',
-  styleUrls: ['./math-utils.component.css']
+  styleUrls: ['./math-utils.component.css'],
+  standalone: false
 })
 export class MathUtilsComponent {
   constructor(private mathUtil: MathUtilService) {}
