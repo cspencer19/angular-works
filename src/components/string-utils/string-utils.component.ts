@@ -3,6 +3,7 @@ import { StringUtilService } from '../../services/StringUtil.service';
 
 @Component({
   selector: 'string-utils',
+  standalone: false,
   templateUrl: './string-utils.component.html',
   styleUrls: ['./string-utils.component.css']
 })

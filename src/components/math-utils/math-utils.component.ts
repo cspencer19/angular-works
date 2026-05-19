@@ -3,6 +3,7 @@ import { MathUtilService } from '../../services/MathUtil.service';
 
 @Component({
   selector: 'math-utils',
+  standalone: false,
   templateUrl: './math-utils.component.html',
   styleUrls: ['./math-utils.component.css']
 })
